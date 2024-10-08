@@ -35,13 +35,13 @@ class ControladorCliente extends Controller
     {
         // Validación y lógica de registro
         $validatedData = $request->validate([
-            'nombre' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::create([
-            'nombre' => $validatedData['nombre'],
+            'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
         ]);
